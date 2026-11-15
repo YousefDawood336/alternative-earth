@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Alternative Earth</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.38' cy='.35'%3E%3Cstop offset='0' stop-color='%239fd0ff'/%3E%3Cstop offset='.6' stop-color='%231d4f8a'/%3E%3Cstop offset='1' stop-color='%2308131f'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E">
+  <meta name="description" content="A NASA Space Apps Challenge project: explore 300-year Earth climate projections based on NASA and NCA5 data on an interactive 3D Earth, and see how human choices shape the planet's future.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="importmap">
+  { "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  } }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a href="#/main" class="logo"><span class="logo-mark"></span>The Alternative <em>Earth</em></a>
+    <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false">Menu</button>
+    <nav id="nav">
+      <a href="#/main" data-route="main">Main</a>
+      <a href="#/3d" data-route="3d">3D View</a>
+      <a href="#/2d" data-route="2d">2D View</a>
+      <a href="#/species" data-route="species">Species</a>
+      <a href="#/qa" data-route="qa">Q&amp;A</a>
+      <a href="#/documents" data-route="documents">Documents</a>
+      <a href="#/videos" data-route="videos">Videos</a>
+      <a href="#/my-matter" data-route="my-matter">My Matter</a>
+      <a href="#/ask" data-route="ask" class="nav-ask">Ask ÉcoVie</a>
+    </nav>
+  </header>
+
+  <!-- WELCOME (opens first, at the site root) -->
+  <main id="page-welcome" class="page welcome">
+    <canvas id="w-stars" aria-hidden="true"></canvas>
+    <div class="w-inner">
+      <div class="w-text">
+        <p class="eyebrow">Welcome to</p>
+        <h1 class="w-title">The Alternative <i>Earth</i></h1>
+        <p class="w-lede">One planet, three possible futures. Explore how Earth's climate could change over the next 300 years, and what that means for oceans, ice, forests, animals and the place you live. The choices people make today decide which future we get. Built on NASA and NCA5 data.</p>
+        <div class="w-cta">
+          <a class="btn btn-primary" href="#/main">Enter</a>
+          <a class="btn btn-ghost" href="#/3d">Go straight to the 3D Earth</a>
+        </div>
+        <ul class="w-features">
+          <li><b>3D &amp; 2D Earth</b><span>Drive 11 climate factors to 2325</span></li>
+          <li><b>Species</b><span>Who we could lose, and when</span></li>
+          <li><b>My Matter</b><span>Advice for where you live</span></li>
+        </ul>
+      </div>
+      <figure class="w-earth">
+        <div class="w-glow" id="w-glow"></div>
+        <img id="w-earth" alt="Earth photographed by NASA's EPIC camera">
+        <figcaption>
+          <span class="w-year" id="w-year">2025</span>
+          <span class="w-temp" id="w-temp">+1.45°C · Current Policies</span>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="w-credit">NASA Space Apps Challenge project · Earth photo: NASA DSCOVR / EPIC · Data: NASA GIBS, GISTEMP, SRTM, EONET and the Fifth National Climate Assessment (NCA5) · Not affiliated with NASA</p>
+  </main>
+
+  <!-- MAIN -->
+  <main id="page-home" class="page">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow reveal">Climate · 2025 → 2325 · NASA &amp; NCA5 data</p>
+        <h1 class="display reveal">The next<br><i>three hundred</i><br>years.</h1>
+        <p class="lede reveal">Turn the dials of Earth's climate and watch the planet answer. Sea level, ice, fire, storms and heat, projected three centuries ahead on a living globe.</p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary" href="#/3d">Open the 3D Earth</a>
+          <a class="btn btn-ghost" href="#/2d">2D map</a>
+        </div>
+      </div>
+      <figure class="hero-earth reveal">
+        <div class="hero-glow"></div>
+        <img id="epic-img" alt="Latest full-disc photo of Earth from NASA's EPIC camera">
+        <figcaption id="epic-cap">Earth, photographed by NASA EPIC from 1.5 million km</figcaption>
+      </figure>
+    </section>
+
+    <section class="band band-light">
+      <div class="band-inner">
+        <p class="eyebrow">Observed · NASA GISTEMP v4</p>
+        <div class="stat-row">
+          <div><div class="big-num" id="h-latest">–</div><p id="h-latest-cap">Global temperature anomaly</p></div>
+          <div><div class="big-num" id="h-warmest">–</div><p>Warmest year on record</p></div>
+          <div><div class="big-num" id="h-co2">–</div><p>CO₂ in the atmosphere</p></div>
+        </div>
+        <div class="chart" id="h-chart" role="img" aria-label="Global temperature anomaly 1880 to present"></div>
+        <p class="source">Source: NASA GISS Surface Temperature Analysis, anomaly vs 1951–1980. CO₂: NASA GISS greenhouse-gas history.</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="band-inner">
+        <p class="eyebrow">Three futures</p>
+        <h2 class="display-2">Where the planet goes depends on one choice.</h2>
+        <div class="scenario-cards" id="h-scenarios"></div>
+      </div>
+    </section>
+
+    <section class="band band-index">
+      <div class="band-inner">
+        <ol class="index-list">
+          <li><a href="#/3d"><strong>3D View</strong><em>Spin the planet. Drive eleven climate factors across 300 years.</em></a></li>
+          <li><a href="#/2d"><strong>2D View</strong><em>The same Earth as a flat map, in sync with the globe.</em></a></li>
+          <li><a href="#/species"><strong>Species</strong><em>Which animals are most likely to be lost, period by period.</em></a></li>
+          <li><a href="#/qa"><strong>Q&amp;A</strong><em>Plain answers, with NASA sources.</em></a></li>
+          <li><a href="#/documents"><strong>Documents</strong><em>NASA technical reports on every factor.</em></a></li>
+          <li><a href="#/videos"><strong>Videos</strong><em>From NASA's image and video library.</em></a></li>
+          <li><a href="#/my-matter"><strong>My Matter</strong><em>What the next 300 years mean where you live, and what to do.</em></a></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <!-- VIEWER (3D + 2D share this page) -->
+  <main id="page-viewer" class="page viewer">
+    <div class="stage" id="stage" data-view="3d">
+      <canvas id="globe-canvas" aria-label="Interactive 3D Earth"></canvas>
+      <div class="map-wrap" id="map-wrap">
+        <canvas id="map-canvas" aria-label="Interactive 2D Earth map"></canvas>
+        <div class="giss" id="giss" hidden>
+          <div class="giss-top"><span id="giss-title"></span><span id="giss-mean"></span></div>
+          <div class="giss-bar">
+            <div class="giss-scale"><i style="background:#4045b3"></i><i style="background:#668ddb"></i><i style="background:#9ec2ed"></i><i style="background:#d1e3f5"></i><i style="background:#fff"></i><i style="background:#fff2ad"></i><i style="background:#ffd466"></i><i style="background:#ff9438"></i><i style="background:#ed4521"></i><i style="background:#ad0f1a"></i><i style="background:#5c0812"></i></div>
+            <div class="giss-labels"><span>-2</span><span>-1</span><span>-.5</span><span>-.2</span><span>.2</span><span>.5</span><span>1</span><span>2</span><span>4</span><span>8</span></div>
+          </div>
+        </div>
+        <div class="zoom-ctl" id="map-zoom">
+          <button data-z="in" aria-label="Zoom in">+</button>
+          <button data-z="out" aria-label="Zoom out">−</button>
+          <button data-z="reset" aria-label="Reset map view">⤢</button>
+          <span id="map-zoom-level">1×</span>
+        </div>
+      </div>
+      <div class="zoom-ctl globe-zoom" id="globe-zoom">
+        <button data-z="in" aria-label="Zoom in">+</button>
+        <button data-z="out" aria-label="Zoom out">−</button>
+      </div>
+      <div class="mini-hud" id="mini-hud" aria-live="polite">
+        <span class="mh-year" id="mh-year">2025</span>
+        <span class="mh-temp" id="mh-temp">+1.45°C</span>
+        <span class="mh-scn" id="mh-scn">Current Policies</span>
+        <span class="mh-views"><button data-view="3d">3D</button><button data-view="2d">2D</button></span>
+      </div>
+      <div class="loading" id="loading"><span class="spinner"></span><span id="loading-text">Loading NASA layers…</span></div>
+    </div>
+
+    <aside class="panel panel-left" id="panel-left">
+      <div class="panel-head">
+        <p class="eyebrow">Scenario</p>
+      </div>
+      <div class="seg" id="scenario-seg"></div>
+      <p class="scenario-blurb" id="scenario-blurb"></p>
+      <div class="panel-head row">
+        <p class="eyebrow">Climate factors</p>
+        <button class="link" id="reset-factors">Reset</button>
+      </div>
+      <div class="factors" id="factors"></div>
+    </aside>
+
+    <aside class="panel panel-right" id="panel-right">
+      <div class="view-switch seg small" id="view-seg">
+        <button data-view="3d">3D</button><button data-view="2d">2D</button>
+      </div>
+      <div class="year-block">
+        <div class="year" id="r-year">2025</div>
+        <div class="temp" id="r-temp">+1.45°C</div>
+        <p class="sub">Global warming vs 1850–1900</p>
+        <span class="conf" id="r-conf"></span>
+      </div>
+      <div class="spark" id="r-spark"></div>
+      <div class="kv">
+        <div><span>CO₂</span><b id="r-co2"></b></div>
+        <div><span>Sea level</span><b id="r-sea"></b></div>
+        <div><span>Forcing</span><b id="r-forc"></b></div>
+        <div><span>Arctic ice (Sep)</span><b id="r-ice"></b></div>
+      </div>
+      <p class="eyebrow">Modes</p>
+      <label class="toggle"><input type="checkbox" id="mode-thermal"><span></span>Thermal view</label>
+      <label class="toggle"><input type="checkbox" id="mode-clouds" checked><span></span>Clouds</label>
+      <label class="toggle"><input type="checkbox" id="mode-borders" checked><span></span>Country borders</label>
+      <div class="legend" id="legend"></div>
+    </aside>
+
+    <div class="probe" id="probe" hidden></div>
+
+    <div class="timeline" id="timeline">
+      <button class="play" id="play" aria-label="Play timeline">▶</button>
+      <div class="track">
+        <div class="lowconf" title="Beyond 2150: low confidence (IPCC AR6 long-term range)"></div>
+        <input type="range" id="year" min="2025" max="2325" step="1" value="2025" aria-label="Year">
+        <div class="ticks"><span>2025</span><span>2100</span><span>2150</span><span>2200</span><span>2250</span><span>2325</span></div>
+      </div>
+    </div>
+    <button class="panel-toggle" id="panel-toggle">Controls</button>
+  </main>
+
+  <!-- SPECIES -->
+  <main id="page-species" class="page doc-page">
+    <div class="page-head">
+      <p class="eyebrow">Species at risk</p>
+      <h1 class="display-2">Who we could <i>lose</i>, and when.</h1>
+      <p class="lede">Animals whose survival is tied to ice, reefs, forests, coasts or cool mountains. For each period on the timeline, the species most likely to be lost and the chance it goes extinct by the end of that period.</p>
+    </div>
+    <div class="sp-controls">
+      <div class="seg" id="sp-scenario"></div>
+      <div class="chips" id="sp-periods"></div>
+    </div>
+    <p class="muted small" id="sp-note"></p>
+    <div class="sp-grid" id="sp-grid"></div>
+    <h2 class="m-sub">Extinction probability by period</h2>
+    <div class="table-wrap"><table class="m-table sp-table" id="sp-table"></table></div>
+    <p class="muted small sp-method">How this is estimated: each species starts from a yearly risk set by its IUCN Red List category (Least Concern → Critically Endangered). That risk is multiplied by how exposed the species is to the climate factors in this site's model: sea-ice loss, coral loss, sea level, heat, fire, drought, deforestation and ocean acidification. These follow the scenario and the sliders in the 3D View. This is an illustrative risk index for comparing species and scenarios, not an official IUCN projection. Photos: Wikipedia / Wikimedia Commons.</p>
+  </main>
+
+  <!-- Q&A -->
+  <main id="page-qa" class="page doc-page">
+    <div class="page-head">
+      <p class="eyebrow">Questions &amp; answers</p>
+      <h1 class="display-2">What the projections mean.</h1>
+      <input type="search" id="qa-search" class="field" placeholder="Search questions…" aria-label="Search questions">
+    </div>
+    <div class="qa-list" id="qa-list"></div>
+  </main>
+
+  <!-- DOCUMENTS -->
+  <main id="page-documents" class="page doc-page">
+    <div class="page-head">
+      <p class="eyebrow">Documents</p>
+      <h1 class="display-2">The science behind every factor.</h1>
+      <p class="lede">The climate data behind this site, the official Space Apps Challenge resources, and technical reports from the NASA Technical Reports Server.</p>
+    </div>
+    <h2 class="m-sub">Climate data behind this site</h2>
+    <div class="resource-grid" id="resources"></div>
+    <h2 class="m-sub">Official resources</h2>
+    <p class="muted res-note">References from the NASA Space Apps Challenge on Earth observation, climate data and trend analysis.</p>
+    <div class="resource-grid" id="official"></div>
+    <h2 class="m-sub">NASA technical reports</h2>
+    <div class="filters">
+      <input type="search" id="doc-search" class="field" placeholder="Search NASA reports…" aria-label="Search reports">
+      <div class="chips" id="doc-chips"></div>
+    </div>
+    <div class="doc-list" id="doc-list"></div>
+  </main>
+
+  <!-- VIDEOS -->
+  <main id="page-videos" class="page doc-page">
+    <div class="page-head">
+      <p class="eyebrow">Videos</p>
+      <h1 class="display-2">Watch the planet change.</h1>
+      <form class="filters" id="video-form">
+        <input type="search" id="video-q" class="field" placeholder="Search NASA videos…" aria-label="Search videos">
+        <div class="chips" id="video-chips"></div>
+      </form>
+    </div>
+    <div class="video-grid" id="video-grid"></div>
+  </main>
+
+  <!-- MY MATTER -->
+  <main id="page-my-matter" class="page doc-page">
+    <div class="page-head">
+      <p class="eyebrow">My Matter</p>
+      <h1 class="display-2">Why it matters where <i>you</i> live.</h1>
+      <p class="lede">Pick a place to see its projected warming, its elevation against rising seas (NASA SRTM), NASA-tracked events nearby, and advice for your region.</p>
+    </div>
+    <div class="matter-form">
+      <label>City<select id="m-city" class="field"></select></label>
+      <label>Latitude<input id="m-lat" class="field" type="number" step="0.01" min="-90" max="90"></label>
+      <label>Longitude<input id="m-lon" class="field" type="number" step="0.01" min="-180" max="180"></label>
+      <button class="btn btn-primary" id="m-go">Show my future</button>
+    </div>
+    <div id="m-result" class="matter-result"></div>
+  </main>
+
+  <!-- ASK ÉcoVie -->
+  <main id="page-ask" class="page doc-page ask-page">
+    <div class="page-head ask-head">
+      <div class="ask-firefly" aria-hidden="true"><span></span></div>
+      <div>
+        <p class="eyebrow">Ask ÉcoVie</p>
+        <h1 class="display-2">Ask <i>ÉcoVie</i>.</h1>
+        <p class="lede">ÉcoVie (French for “eco-life”) answers only from the NASA climate data and official references on this site: GISTEMP temperatures, GISS CO₂, NASA technical reports, the NCA5 / IPCC scenarios, and the Space Apps resources. It does not search the internet and politely declines questions outside climate and this website.</p>
+      </div>
+    </div>
+    <div class="ask-chips" id="ask-chips"></div>
+    <div class="ask-log" id="ask-log" aria-live="polite"></div>
+    <form class="ask-form" id="ask-form">
+      <input id="ask-input" class="field" autocomplete="off" placeholder="Ask ÉcoVie… e.g. How much will the sea rise by 2100?" aria-label="Your question for ÉcoVie">
+      <button class="btn btn-primary" type="submit">Ask</button>
+    </form>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div>
+      <div class="footer-big">The Alternative <em>Earth</em></div>
+      <p>Built for the NASA Space Apps Challenge to show how human choices shape Earth's next 300 years. Data: NASA GIBS · GISTEMP · SRTM · EONET · EPIC · NTRS · Image &amp; Video Library, and the Fifth National Climate Assessment (NCA5). Projections follow the IPCC AR6 / NCA5 scenario pathways. A simplified emulator for exploration, not a forecast. Not affiliated with or endorsed by NASA.</p>
+      <p class="footer-links"><a href="#/documents">Official resources and data sources →</a></p>
+    </div>
+  </footer>
+
+  <dialog id="video-dialog" class="video-dialog">
+    <button class="close" id="video-close" aria-label="Close">✕</button>
+    <video id="video-player" controls playsinline></video>
+    <h3 id="video-title"></h3>
+    <p id="video-desc"></p>
+  </dialog>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
