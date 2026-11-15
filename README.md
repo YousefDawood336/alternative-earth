@@ -3,20 +3,6 @@
 **Live website: https://yousefdawood336.github.io/alternative-earth/**
 **Presentation for the judges:** [presentation/The-Alternative-Earth-Space-Apps.pptx](presentation/The-Alternative-Earth-Space-Apps.pptx)
 
-## About the project
-
-In a world increasingly dominated by industrialization and the rapid expansion of industries in all their forms, humanity—once an integral part of the ecosystem—has become a direct threat to its own environment and planet. Yet, do we truly grasp the weight of this reality? Can the seemingly minor changes we make today trigger monumental consequences in the future?
-
-Through our platform, Alternative Earth, we have been deeply committed to providing an integrated experience powered by authentic NASA data. We designed this interactive website to allow you to explore the transformations occurring across Earth’s surface due to various climatic factors, directly addressing the "Be an Earth System Trend Detective" challenge.
-
-The platform forecasts a wide range of environmental scenarios over the next 300 years. Across its various sections, it also highlights specific wildlife species and illustrates their projected extinction rates based on the selected timeframe. Furthermore, if you encounter any difficulties while navigating the site, we are proud to introduce ÉcoVie, your personal AI assistant. ÉcoVie guides you through the platform's different sections and is equipped to answer your questions based on the verified data available to it.
-
-Depending on the geographic region you select, the platform also helps you discover your individual role and offers actionable advice on how you can contribute to saving the planet.
-
-After all, if we consider ourselves mere guests on this Earth, the least a courteous guest can do is leave the place just as they found it.
-
-## Technical overview
-
 A NASA Space Apps Challenge project. It visualises 300-year Earth climate projections (2025 → 2325) based on NASA and NCA5 data, on an interactive 3D Earth with data tables. **Goal:** raise environmental awareness by showing clearly how human choices today shape the planet's future.
 
 **Project rule:** NASA resources are the main database. All NASA data goes through [`js/nasa.js`](js/nasa.js).
