@@ -1,5 +1,7 @@
 # The Alternative Earth
 
+**Live website: https://yousefdawood336.github.io/alternative-earth/**
+
 A NASA Space Apps Challenge project. It visualises 300-year Earth climate projections (2025 → 2325) based on NASA and NCA5 data, on an interactive 3D Earth with data tables. **Goal:** raise environmental awareness by showing clearly how human choices today shape the planet's future.
 
 **Project rule:** NASA resources are the main database. All NASA data goes through [`js/nasa.js`](js/nasa.js).
