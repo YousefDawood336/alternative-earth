@@ -1,0 +1,207 @@
+// Editorial content: Q&A, NASA resource links, cities. Answers are written for this site and point to NASA sources.
+
+export const QA = [
+  { q: "How can anyone project the climate 300 years ahead?",
+    a: "Nobody can predict the weather in 2300, but the physics of heat-trapping gases is well understood. Climate models, including NASA GISS ModelE, are run under different emission pathways. Up to 2100 the results are robust. After that they show a range of possibilities rather than a single answer. This site emulates those published pathways and lets you explore them.",
+    src: ["NASA GISS climate modeling", "https://www.giss.nasa.gov/projects/gcm/"] },
+  { q: "What are the three scenarios?",
+    a: "Paris Path (SSP1-2.6): emissions fall fast and warming stays below 2 °C. Current Policies (SSP2-4.5): roughly where today's policies lead, about 2.7 °C by 2100. Extreme Fossil Fuel (SSP5-8.5): emissions keep growing, about 4.4 °C by 2100 and still rising after that.",
+    src: ["NASA Sea Level Projection Tool (scenario definitions)", "https://sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool"] },
+  { q: "Why does the timeline turn hatched after 2150?",
+    a: "Beyond 2150 the IPCC only gives long-term ranges. Ice-sheet behaviour in particular is deeply uncertain. By 2300, sea level could rise anywhere from about 0.3–3 m (Paris Path) to 1.7–6.8 m (Extreme Fossil), and more if ice sheets collapse. The site shows a central value and marks it as low confidence.",
+    src: ["NASA Sea Level Change portal", "https://sealevel.nasa.gov/"] },
+  { q: "Where does the data on this site come from?",
+    a: "The Earth imagery comes from NASA: the Blue Marble surface and sea-floor shading, the land mask and SRTM elevation all come through NASA GIBS. Temperature history comes from GISTEMP v4, nearby disasters from EONET, the daily Earth photo from EPIC, reports from NTRS, and videos from the NASA Image and Video Library. Country borders (Natural Earth), country names and capitals, and species photos (Wikimedia Commons) come from open non-NASA sources.",
+    src: ["NASA Earthdata", "https://www.earthdata.nasa.gov/"] },
+  { q: "How much will the sea rise?",
+    a: "By 2100, roughly 0.44 m (Paris Path) to 0.77 m (Extreme Fossil) above the 1995–2014 level, and the rise keeps going for centuries. Flooding on the globe uses NASA SRTM elevation, which comes in 5 m steps. Treat the coastlines as an illustration: they leave out sea walls, tides and storm surge.",
+    src: ["NASA Sea Level Projection Tool", "https://sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool"] },
+  { q: "Will the Arctic become ice-free?",
+    a: "In September, very likely at least once before 2050 under every scenario. Arctic sea ice has already shrunk by about 13% per decade since satellite records began in 1979.",
+    src: ["NASA Vital Signs: Arctic sea ice", "https://science.nasa.gov/climate-change/"] },
+  { q: "Why does the Arctic warm faster, and look hottest in the thermal view?",
+    a: "NASA's GISTEMP record shows the far north warming roughly twice as fast as the global average, because melting ice and snow expose darker ground and water that absorb more sunlight. The thermal view applies GISTEMP's observed latitude pattern to the projected global warming.",
+    src: ["NASA GISTEMP zonal means", "https://data.giss.nasa.gov/gistemp/"] },
+  { q: "Do wildfires, storms and droughts really get worse?",
+    a: "Yes. Heat extremes that used to happen once a decade happen about 4 times as often at 1.5 °C and about 9 times as often at 4 °C. Agricultural droughts happen 2–4 times as often, and extreme rainfall 1.5–2.7 times as often. The factor values on this site follow those IPCC AR6 scalings.",
+    src: ["NASA: The effects of climate change", "https://science.nasa.gov/climate-change/effects/"] },
+  { q: "What happens to coral reefs?",
+    a: "Warm-water reefs are projected to decline by 70–90% at 1.5 °C and by more than 99% at 2 °C. Extra CO₂ also makes the ocean more acidic. The markers on the globe turn from pink to bleached white as the ocean factor rises.",
+    src: ["NASA Earth Observatory: coral reefs", "https://earthobservatory.nasa.gov/"] },
+  { q: "What is the 'Radiation' control?",
+    a: "Radiative forcing is the extra energy, in watts per square metre, that the planet traps compared with pre-industrial times. NASA's CERES satellites measure Earth's energy imbalance directly. Raising this control warms the planet in the emulator, and the atmosphere glow on the globe shifts from blue to red.",
+    src: ["NASA CERES", "https://ceres.larc.nasa.gov/"] },
+  { q: "What does 'CO₂ equivalent' mean here?",
+    a: "Several gases trap heat (CO₂, methane, nitrous oxide). 'CO₂ equivalent' expresses them as the amount of CO₂ that would have the same effect. This control scales the human-added greenhouse gases in the scenario, and the readout shows the resulting CO₂ concentration.",
+    src: ["NASA: Carbon dioxide vital sign", "https://science.nasa.gov/climate-change/"] },
+  { q: "If emissions stop, does the warming reverse?",
+    a: "Temperatures stop rising fairly quickly once CO₂ emissions reach net zero. Sea level keeps rising for centuries, because oceans and ice sheets respond slowly. That is why the Paris Path still shows a higher sea in 2300.",
+    src: ["NASA Sea Level Change portal", "https://sealevel.nasa.gov/"] },
+  { q: "What do the factor sliders actually do?",
+    a: "The CO₂ equivalent, radiation and deforestation controls change how much heat is trapped, which changes warming and everything downstream. The other controls scale how strongly an impact shows up, from 0% to 200% of the published scenario, so you can test 'what if' questions.",
+    src: null },
+  { q: "Is this an official NASA product?",
+    a: "No. It is an independent educational site that uses NASA's open data and services. It is not affiliated with or endorsed by NASA, and its emulator is a simplification for exploration, not a forecast.",
+    src: ["NASA open data policy", "https://www.earthdata.nasa.gov/engage/open-data-services-software-policies"] },
+];
+
+// NASA and national-assessment data behind the site: [organisation, title, description, url]
+export const RESOURCES = [
+  ["NASA", "Climate Change & Vital Signs", "NASA's hub for global temperature, CO₂, ice and sea level indicators.", "https://science.nasa.gov/climate-change/"],
+  ["NASA", "Sea Level Projection Tool", "NASA-hosted IPCC AR6 projections for any coastline, to 2150.", "https://sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool"],
+  ["NASA", "GISTEMP v4", "NASA GISS global surface temperature record since 1880.", "https://data.giss.nasa.gov/gistemp/"],
+  ["USGCRP", "Fifth National Climate Assessment (NCA5)", "The U.S. government's 2023 assessment of climate change, its impacts and responses, with NASA as a contributing agency.", "https://nca2023.globalchange.gov/"],
+  ["NASA", "Worldview / GIBS", "Daily global satellite imagery and the Blue Marble layers behind this site's globe.", "https://worldview.earthdata.nasa.gov/"],
+  ["NASA", "EONET", "Earth Observatory Natural Event Tracker: wildfires, storms, volcanoes.", "https://eonet.gsfc.nasa.gov/"],
+  ["NASA", "FIRMS", "Fire Information for Resource Management: active fires in near real time.", "https://firms.modaps.eosdis.nasa.gov/"],
+  ["NASA", "NEX-GDDP-CMIP6", "NASA downscaled daily climate projections to 2100 for each scenario.", "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp-cmip6"],
+  ["NASA", "Scientific Visualization Studio", "NASA's climate animations and data visualizations.", "https://svs.gsfc.nasa.gov/"],
+];
+
+// Official Space Apps Challenge resources used as references for this project
+export const OFFICIAL_RESOURCES = [
+  ["Canadian Space Agency", "Synthetic Aperture Radar Python Tutorial", "Step-by-step tutorial for opening and plotting RADARSAT radar data in Python and QGIS.", "https://github.com/asc-csa/Synthetic_Aperture_Radar_Tutorial"],
+  ["Canadian Space Agency", "Monitoring and protecting our ecosystems from space", "How satellites track forests, wildlife habitat, oil spills and other changes to ecosystems.", "https://www.asc-csa.gc.ca/eng/satellites/everyday-lives/monitoring-and-protecting-our-ecosystems-from-space.asp"],
+  ["Canadian Space Agency", "SWOT Satellite Mission", "Surface Water and Ocean Topography: the first global survey of Earth's surface water and sea levels.", "https://www.asc-csa.gc.ca/eng/satellites/swot/"],
+  ["Government of Canada", "Geo.ca", "Canada's geospatial data platform: maps, satellite data and Earth observation records.", "https://geo.ca/"],
+  ["Canadian Space Agency", "RADARSAT Constellation Mission (RCM) - Data", "Open radar imagery from three satellites that scan Earth day and night, in any weather.", "https://data.asc-csa.gc.ca/en/dataset/64927856-8o0t-5u1o-987izna480aa45"],
+  ["Statsig", "A Comprehensive Guide to Statistical Significance", "How to tell a real change from random noise: p-values, confidence and effect size.", "https://statsig.com/perspectives/a-comprehensive-guide-to-statistical-significance"],
+  ["CRAN · funtimes", "Statistical test methods to detect trends in time series data", "Trend tests for time series (t-test, Mann-Kendall, WAVK), including methods for autocorrelated data.", "https://cran.r-project.org/web/packages/funtimes/vignettes/trendtests.html"],
+  ["KNMI", "KNMI Climate Explorer", "Royal Netherlands Meteorological Institute tool to analyse and compare climate observations and model projections.", "https://climexp.knmi.nl/"],
+  ["NASA", "Time-Series Analysis of Remotely-Sensed SeaWiFS Chlorophyll in River-Influenced Coastal Regions", "Acker et al. (2009): a decade of SeaWiFS ocean colour showing how rivers and people change coastal waters.", "https://ntrs.nasa.gov/citations/20090042747"],
+  ["NOAA NCEI", "Climate Data Online (CDO)", "Free access to NOAA's archive of historical weather and climate station data.", "https://www.ncei.noaa.gov/cdo-web/"],
+];
+
+export const CITIES = [
+  ["Alexandria, Egypt", 31.2, 29.92], ["Amsterdam, Netherlands", 52.37, 4.9], ["Bangkok, Thailand", 13.76, 100.5],
+  ["Cairo, Egypt", 30.04, 31.24], ["Dhaka, Bangladesh", 23.81, 90.41], ["Dubai, UAE", 25.2, 55.27],
+  ["Ho Chi Minh City, Vietnam", 10.82, 106.63], ["Jakarta, Indonesia", -6.21, 106.85], ["Kolkata, India", 22.57, 88.36],
+  ["Lagos, Nigeria", 6.52, 3.38], ["London, UK", 51.51, -0.13], ["Los Angeles, USA", 34.05, -118.24],
+  ["Manila, Philippines", 14.6, 120.98], ["Miami, USA", 25.76, -80.19], ["Mumbai, India", 19.08, 72.88],
+  ["New Orleans, USA", 29.95, -90.07], ["New York, USA", 40.71, -74.01], ["Reykjavík, Iceland", 64.15, -21.94],
+  ["Riyadh, Saudi Arabia", 24.71, 46.68], ["Rio de Janeiro, Brazil", -22.91, -43.17], ["Shanghai, China", 31.23, 121.47],
+  ["Sydney, Australia", -33.87, 151.21], ["Tokyo, Japan", 35.68, 139.69], ["Venice, Italy", 45.44, 12.32],
+];
+
+/*
+ * Region-specific advice for "My Matter". Keys are UN geoscheme subregions (as used by the countries dataset).
+ * Each group: main climate risks for that region + concrete things residents and communities can do.
+ */
+export const REGION_ADVICE = [
+  { id: "mena", title: "Middle East & North Africa", subregions: ["Northern Africa", "Western Asia"],
+    risks: "Extreme heat, water scarcity, dust storms, and sea-level rise on deltas such as the Nile.",
+    tips: [
+      "Plan for summer heat: shade and insulate roofs, use light-coloured surfaces, and move outdoor work to early morning.",
+      "Save water at home with low-flow fixtures and greywater reuse. Support drip irrigation and treated-wastewater reuse in farming.",
+      "On dusty days, keep windows shut and use a mask or air filter, especially if you have children, older relatives or asthma.",
+      "Rooftop solar pays off fast in this sunshine and cuts both emissions and peak-time power cuts.",
+      "In coastal and delta cities such as Alexandria, check flood maps before buying or building, and support coastal defences and dune protection.",
+    ] },
+  { id: "subsahara", title: "Sub-Saharan Africa", subregions: ["Western Africa", "Eastern Africa", "Middle Africa", "Southern Africa"],
+    risks: "Drought, erratic rains, heatwaves, floods, and pressure on forests and wildlife.",
+    tips: [
+      "Use drought-tolerant crop varieties, mulching and rainwater harvesting to protect harvests from failed rains.",
+      "Join or support early-warning networks (SMS weather alerts, community flood watches).",
+      "Choose clean cooking (LPG, improved stoves, biogas). It cuts smoke indoors and takes pressure off forests.",
+      "Protect and replant trees on farms (agroforestry). They cool the land, hold soil and add income.",
+      "Store safe drinking water before the dry season, and boil or treat it after floods to avoid cholera.",
+    ] },
+  { id: "southasia", title: "South Asia", subregions: ["Southern Asia"],
+    risks: "Deadly humid heat, monsoon floods, cyclones, glacier melt, and sea-level rise in the Ganges–Brahmaputra delta.",
+    tips: [
+      "Learn the signs of heat stroke. Keep water, ORS and a cool room ready, and check on outdoor workers and elderly neighbours.",
+      "Raise plinths, electrical points and grain storage above past flood levels. Keep documents in waterproof bags.",
+      "Follow cyclone warnings and know your nearest cyclone shelter. Mangrove protection cuts storm surge for coastal villages.",
+      "Back city heat-action plans: cool roofs, tree cover, and public cooling centres.",
+      "Switching from diesel pumps to solar irrigation pumps saves money and emissions.",
+    ] },
+  { id: "seasia", title: "Southeast Asia", subregions: ["South-Eastern Asia"],
+    risks: "Typhoons, coastal flooding, sinking delta cities, haze from forest fires, and coral reef loss.",
+    tips: [
+      "Know your typhoon evacuation route, and keep a go-bag with documents, medicine, power bank and water.",
+      "Avoid products linked to peatland drainage and forest burning. Look for certified sustainable palm oil.",
+      "During haze episodes, use N95 masks and air purifiers, and keep children indoors when the air-quality index is unhealthy.",
+      "Support mangrove and reef protection: they shield coasts from waves and feed fisheries.",
+      "In low-lying cities such as Jakarta, Bangkok and Ho Chi Minh City, avoid groundwater pumping. It makes the land sink faster than the sea rises.",
+    ] },
+  { id: "eastasia", title: "East & Central Asia", subregions: ["Eastern Asia", "Central Asia"],
+    risks: "Heatwaves, river floods, drought in the interior, shrinking glaciers, and air pollution.",
+    tips: [
+      "Watch heavy-rain warnings. Underground spaces and basements flood fastest, so leave them early.",
+      "Cut coal smoke at home: switch to heat pumps or clean district heating where you can.",
+      "In arid Central Asia, support efficient irrigation and glacier-fed water planning. The water from melting glaciers will peak, then fall.",
+      "Use public transport and e-mobility. They cut both CO₂ and city smog.",
+      "Plan for hotter summers: insulation, shading, and checking on elderly people living alone.",
+    ] },
+  { id: "europe", title: "Europe", subregions: ["Northern Europe", "Western Europe", "Southern Europe", "Eastern Europe", "Central Europe", "Southeast Europe"],
+    risks: "Record heatwaves, wildfires in the south, river and flash floods, and drought hitting farms and rivers.",
+    tips: [
+      "Make homes heat-ready: external shading, night ventilation, and a cool room. Most heat deaths happen indoors among older people.",
+      "In Mediterranean areas, clear dry vegetation around homes and follow fire-danger restrictions in summer.",
+      "Check your property against national flood maps, and consider flood insurance and flood barriers for doors.",
+      "Insulate and switch to a heat pump. EU and national grants often cover much of the cost.",
+      "Take the train instead of short flights, and support cycling and public transport in your city.",
+    ] },
+  { id: "namerica", title: "North America", subregions: ["North America", "Northern America"],
+    risks: "Wildfire smoke, hurricanes, heat domes, drought in the West, and coastal flooding.",
+    tips: [
+      "Make a wildfire plan: create defensible space, harden vents and roofs, and keep a HEPA purifier for smoke days.",
+      "On the Gulf and Atlantic coasts, know your hurricane evacuation zone and get flood insurance. Standard home policies don't cover floods.",
+      "In the arid West, switch to native, low-water landscaping and fix leaks.",
+      "Electrify home heating, cooking and your next car, and use available tax credits and rebates.",
+      "Sign up for local emergency alerts, and check on neighbours during heat waves and power cuts.",
+    ] },
+  { id: "latam", title: "Latin America & Caribbean", subregions: ["South America", "Central America", "Caribbean"],
+    risks: "Amazon deforestation and drought, hurricanes in the Caribbean, glacier loss in the Andes, and coral reef collapse.",
+    tips: [
+      "Choose beef, soy and timber that are certified deforestation-free. The Amazon's future depends on it.",
+      "In hurricane zones, secure roofs with straps and keep shutters, water and a battery radio ready.",
+      "Support indigenous land rights. Indigenous territories have some of the lowest deforestation rates.",
+      "In Andean cities, plan for less glacier water: store rainwater and support watershed protection.",
+      "Protect reefs: use reef-safe sunscreen, avoid touching coral, and back marine protected areas.",
+    ] },
+  { id: "aunz", title: "Australia & New Zealand", subregions: ["Australia and New Zealand"],
+    risks: "Bushfires, extreme heat, drought, marine heatwaves on the Great Barrier Reef, and floods.",
+    tips: [
+      "Prepare a bushfire survival plan, clear gutters and vegetation, and know your local fire danger rating.",
+      "Make your home efficient in heat: insulation, shading, and rooftop solar with a battery.",
+      "Save water during drought and support water recycling and stormwater harvesting.",
+      "Help wildlife after fires and in heatwaves: leave shallow water out and report injured animals to rescue groups.",
+      "Support reef protection and lower emissions. Marine heatwaves are what bleach the reef.",
+    ] },
+  { id: "pacific", title: "Pacific Islands", subregions: ["Melanesia", "Micronesia", "Polynesia"],
+    risks: "Sea-level rise, saltwater entering groundwater and crops, cyclones, and reef loss.",
+    tips: [
+      "Protect freshwater: collect rainwater and guard wells against saltwater.",
+      "Plant salt-tolerant crop varieties and replant mangroves and coastal vegetation.",
+      "Keep cyclone shelters and community warning systems in good order.",
+      "Keep traditional knowledge of weather, fishing and land use alive. It is a key part of adapting.",
+      "Raise your voice internationally. Pacific nations lead calls for the 1.5 °C limit.",
+    ] },
+  { id: "polar", title: "Arctic & high latitudes", subregions: [],
+    risks: "The fastest warming on Earth: thawing permafrost, thinning ice, coastal erosion, and changing wildlife.",
+    tips: [
+      "Check buildings and roads for permafrost-thaw damage, and use raised or adjustable foundations.",
+      "Travel on sea and lake ice only with local, up-to-date ice-condition reports.",
+      "Watch for new species, pests and diseases moving north. Report sightings to local monitoring programmes.",
+      "Support community-led monitoring that combines Indigenous knowledge and satellite data.",
+    ] },
+  { id: "ocean", title: "Open ocean", subregions: [],
+    risks: "Ocean warming, acidification, marine heatwaves, and shifting fish stocks.",
+    tips: [
+      "Choose sustainably certified seafood, and avoid species from overfished stocks.",
+      "Support marine protected areas. They help ecosystems recover from heat stress.",
+      "Cut single-use plastics, which add to the stress on marine life.",
+    ] },
+];
+
+/** Advice triggered by the specific place, not just the region. */
+export const HAZARD_ADVICE = {
+  coastal: "Your location is low-lying (within about 10 m of sea level). Check the NASA Sea Level Projection Tool for your coast, avoid storing valuables on the ground floor, and know your evacuation route.",
+  heat: "Your latitude band is projected to warm faster than the global average. Build heat-readiness into your home and routine: shade, cooling, hydration, and checking on vulnerable people.",
+  dryland: "You are in a subtropical dryland belt where droughts are projected to get more frequent. Store water, choose drought-tolerant plants, and support water-efficient farming.",
+  fire: "Your area lies in a fire-prone belt. Keep vegetation clear around buildings and follow fire-danger alerts.",
+  arctic: "You are at high latitude, where warming runs about twice the global average. Permafrost and ice conditions will change fastest here.",
+};
+
+export const VIDEO_TOPICS = ["climate change", "sea level rise", "ice sheet", "wildfire", "hurricane", "drought", "coral reef", "air quality", "global temperature"];
